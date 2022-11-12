@@ -1,0 +1,31 @@
+﻿@model IEnumerable<BurlingServer.User>
+
+<h3>USERS</h3>
+<table id="userTable" class="table table-striped">
+    <tr>
+        <th>
+            <b>FirstName</b>
+        </th>
+        <th>
+            <b>LastName</b>
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td data-colum="FirstName">
+                @item.FirstName
+            </td>
+            <td data-colum="LastName">
+                @item.LastName
+            </td>
+            <td>
+                <button type="button" class="btn btn-primary" onclick="editUser(@item.ID,'@item.FirstName', '@item.LastName')">Edit</button>
+                <button type="button" class="btn btn-danger" onclick="deleteUser(@item.ID)">Delete</button>
+            </td>
+        </tr>
+    }
+
+</table>

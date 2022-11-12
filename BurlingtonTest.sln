@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31605.320
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BurlingtonTest", "BurlingtonTest\BurlingtonTest.csproj", "{98C762BF-9611-493E-B934-6967C8744D4E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BurlingServer", "BurlingServer\BurlingServer.csproj", "{0F45AA8C-BB98-4D19-9920-4B982A0E0537}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{98C762BF-9611-493E-B934-6967C8744D4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98C762BF-9611-493E-B934-6967C8744D4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98C762BF-9611-493E-B934-6967C8744D4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98C762BF-9611-493E-B934-6967C8744D4E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F45AA8C-BB98-4D19-9920-4B982A0E0537}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F45AA8C-BB98-4D19-9920-4B982A0E0537}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F45AA8C-BB98-4D19-9920-4B982A0E0537}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F45AA8C-BB98-4D19-9920-4B982A0E0537}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {60DEEB0A-721A-4D4D-ABAA-F457A442A126}
+	EndGlobalSection
+EndGlobal

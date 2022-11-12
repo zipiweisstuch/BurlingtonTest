@@ -1,0 +1,108 @@
+﻿@model IEnumerable<BurlingServer.User>
+
+@{
+    ViewBag.Title = "Users";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <h3>ADD / UPDATE USER</h3>
+            <div id="addUser" action="">
+                <div class="form-group">
+                    <input class="form-control" type="text" id="firstName" placeholder="FirstName"  maxlength="50">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" id="lastName" placeholder="LastName"  maxlength="50">
+                </div>
+                <button class="btn btn-success form-control" type="button" onclick="saveUser()">SAVE</button>
+
+                <p class="validAlert hide">Please insert FirstName and LastName</p>
+            </div>
+        </div>
+        <div id="TheTable" class="col-md-8">
+            @Html.Partial("_UserTable", Model)
+        </div>
+    </div>
+</div>
+
+
+<script>
+    var currentUserId = 0;
+
+    function deleteUser(userId) {
+        var formData = new FormData();
+        formData.append('id', userId);
+        $.ajax({
+            type: "POST",
+            url: "../Users/Delete",
+            data: formData,
+            contentType: false,
+            processData: false,
+            dataType: "json",
+            success: function () { $("#TheTable").load('../Users/_UserTable');},
+            error: function () { alert('error');}              
+        });
+    }
+
+    function editUser(userId,firstName, lastName) {
+        currentUserId = userId;
+        $('#firstName').val(firstName);
+        $('#lastName').val(lastName);
+    }
+
+    function saveUser() {
+        var valid = true;
+
+        if ($('#firstName').val().trim() == '') {
+            $('#firstName').addClass('notValid');
+            valid = false;
+        }
+        else {
+            $('#firstName').removeClass('notValid');
+        }
+        if ($('#lastName').val().trim() == '') {
+            $('#lastName').addClass('notValid');
+            valid = false;
+        }
+        else {
+            $('#lastName').removeClass('notValid');
+        }
+
+        if (!valid) {
+            $('p.validAlert').removeClass('hide');
+            return;
+        }
+        else {
+            $('p.validAlert').addClass('hide');
+        }
+
+        var formData = new FormData();
+
+        var url = "../Users/AddUser";
+
+        if (currentUserId > 0) {
+            url = "../Users/Edit";
+            formData.append('ID', currentUserId);
+        }
+        formData.append('FirstName', $('#firstName').val());
+        formData.append('LastName', $('#lastName').val());
+        $.ajax({
+            type: "POST",
+            url:url,
+            data: formData,
+            contentType: false,
+            processData: false,
+            dataType: "json",
+            success: successFunc,
+            error: function () { alert('error'); }
+        });
+
+        function successFunc() {
+            currentUserId = 0;
+            $('#firstName').val('');
+            $('#lastName').val('');
+            $("#TheTable").load('../Users/_UserTable');
+        }
+    }
+</script>
